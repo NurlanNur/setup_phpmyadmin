@@ -1,0 +1,29 @@
+# IN ORDER TO SEE USER, HOST AND PLUGIN IN USER.TABLE
+mysql> select user,host,plugin from mysql.user;
++------------------+-----------+-----------------------+
+| user             | host      | plugin                |
++------------------+-----------+-----------------------+
+| myuser           | %         | mysql_native_password |
+| mysql.infoschema | localhost | caching_sha2_password |
+| mysql.session    | localhost | caching_sha2_password |
+| mysql.sys        | localhost | caching_sha2_password |
+| root             | localhost | mysql_native_password |
++------------------+-----------+-----------------------+
+
+# CREATE USER
+CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'password';
+
+# ALTER USER
+ALTER USER 'jeffrey'@'localhost' IDENTIFIED BY 'new_password';
+
+# SHOW GRANTS FOR SOME USER
+mysql> show grants for 'root'@'localhost';
+
+# CREATE USER
+CREATE USER 'myuser'@'localhost'IDENTIFIED WITH mysql_native_password BY 'password';
+
+# GIVE PRIVILEGES TO SOME USER
+GRANT ALL PRIVILEGES ON *.* TO 'myuser'@'%' WITH GRANT OPTION;
+
+#FLUSH PRIVILEGES
+FLUSH PRIVILEGES;
